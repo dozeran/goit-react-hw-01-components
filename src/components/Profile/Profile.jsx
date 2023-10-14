@@ -1,32 +1,30 @@
-export const Profile = ({ username, tag, location, avatar, stats }) => { 
-    const { followers, views, likes } = stats;
-    return (
-        <div className="profile">
-  <div className="description">
-    <img
-      src={avatar}
-      alt="User avatar"
-      className="avatar"
-    />
-    <p className="name">{username}</p>
-    <p className="tag">@{tag}</p>
-    <p className="location">{location}</p>
-  </div>
+import { Avatar, Container, Name, Stats, StatsItem } from './Profile.styled';
 
-  <ul className="stats">
-    <li>
-      <span className="label">Followers</span>
-      <span className="quantity">{followers}</span>
-    </li>
-    <li>
-      <span className="label">Views</span>
-      <span className="quantity">{views}</span>
-    </li>
-    <li>
-      <span className="label">Likes</span>
-      <span className="quantity">{likes}</span>
-    </li>
-  </ul>
-</div>
-    );
-}
+export const Profile = ({ username, tag, location, avatar, stats }) => {
+  const { followers, views, likes } = stats;
+  return (
+    <Container>
+      <div>
+        <Avatar src={avatar} alt="User avatar" />
+        <Name>{username}</Name>
+        <p>@{tag}</p>
+        <p>{location}</p>
+      </div>
+
+      <Stats>
+        <StatsItem>
+          <span>Followers</span>
+          <span>{followers}</span>
+        </StatsItem>
+        <StatsItem>
+          <span>Views</span>
+          <span>{views}</span>
+        </StatsItem>
+        <StatsItem>
+          <span>Likes</span>
+          <span>{likes}</span>
+        </StatsItem>
+      </Stats>
+    </Container>
+  );
+};

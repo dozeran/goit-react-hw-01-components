@@ -1,16 +1,23 @@
+import {
+  Item,
+  Section,
+  List,
+  Persontage,
+  getRandomColor,
+} from './Statistics.styled';
+
 export const Statistics = ({ stats, title }) => {
-    return (
-       <section className="statistics">
-        {title && <h2 className="title">{title}</h2>}
-      <ul className="stat-list">
-          
-      {stats.map(({ id, label, percentage }) => (
-        <li className="item" key={id}>
-          <span className="label">{label}</span>
-          <span className="percentage">{percentage}</span>
-        </li>
-      ))}
-            </ul>
-            </section>
+  return (
+    <Section>
+      {title && <h2>{title}</h2>}
+      <List>
+        {stats.map(({ id, label, percentage }) => (
+          <Item key={id} style={{ backgroundColor: getRandomColor() }}>
+            <span>{label}</span>
+            <Persontage>{percentage}%</Persontage>
+          </Item>
+        ))}
+      </List>
+    </Section>
   );
 };
